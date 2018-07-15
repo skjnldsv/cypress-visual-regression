@@ -1,27 +1,9 @@
-/* eslint-disable no-undef */
-
 function compareSnapshotCommand() {
+  /* eslint-disable no-undef */
   Cypress.Commands.add('compareSnapshot', (name) => {
-    // get image title from the 'type' environment variable
-    let title = 'actual';
-    if (Cypress.env('type') === 'base') { title = 'base'; }
-
-    // take snapshot
-    cy.screenshot(`${name}-${title}`);
-
-    // run visual tests
-    if (Cypress.env('type') === 'actual') {
-      const options = {
-        fileName: name,
-        specDirectory: Cypress.spec.name,
-      };
-      cy.task('compareSnapshotsPlugin', options).then((results) => {
-        if (!results) throw new Error(`${name} images are different`);
-      });
-    }
+    cy.screenshot(name);
   });
+  /* eslint-enable no-undef */
 }
-
-/* eslint-enable no-undef */
 
 module.exports = compareSnapshotCommand;

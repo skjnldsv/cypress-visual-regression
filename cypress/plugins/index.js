@@ -1,5 +1,5 @@
 const getCompareSnapshotsPlugin = require('../../dist/plugin');
 
-module.exports = (on) => {
-  getCompareSnapshotsPlugin(on);
+module.exports = (on, config) => {
+  getCompareSnapshotsPlugin(on, config);
 };

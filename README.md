@@ -30,8 +30,8 @@ Add the plugin to *cypress/plugins/index.js*:
 ```javascript
 const getCompareSnapshotsPlugin = require('cypress-visual-regression/dist/plugin');
 
-module.exports = (on) => {
-  getCompareSnapshotsPlugin(on);
+module.exports = (on, config) => {
+  getCompareSnapshotsPlugin(on, config);
 };
 ```
 
@@ -61,6 +61,6 @@ $ ./node_modules/.bin/cypress run --env type=actual
 
 ## TODO
 
-1. Port over [app](https://github.com/mjhea0/testcafe-visual-regression/blob/master/src/app.js) to display [results](https://github.com/mjhea0/testcafe-visual-regression/blob/master/docs/example.png) from each test run
+1. Spin up local server for testing
 1. Allow end user to customize options (like error thresholds, screenshot directory)
 1. Prevent "base" tests runs from actually running the regular tests

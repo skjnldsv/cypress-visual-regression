@@ -19,10 +19,11 @@ module.exports = (on, config) => {
         };
         imageDiff(options, (err, imagesAreSame) => {
           if (err) return reject(err);
-          if (!imagesAreSame) reject(new Error(`${details.name} images are different`));
-          resolve(imagesAreSame);
+          if (!imagesAreSame) return reject(new Error(`${details.name} images are different`));
+          return resolve(imagesAreSame);
         });
       });
     }
+    return null; // TODO refactor
   });
-}
+};
